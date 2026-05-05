@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şehrim</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="sehir-page">
+
+<header>
+    <nav class="navbar">
+        <h2 class="logo">Arda</h2>
+        <ul>
+            <li><a href="index.html">Hakkımda</a></li>
+            <li><a href="cv.html">Özgeçmiş</a></li>
+            <li><a href="sehir.html">Şehrim</a></li>
+            <li><a href="miras.html">Miras</a></li>
+            <li><a href="ilgi.html">İlgi</a></li>
+            <li><a href="iletisim.html">İletişim</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="city">
+    <h1>Bursa</h1>
+    <p>Nüfus: ~3 milyon | Osmanlı'nın ilk başkenti</p>
+
+    <div class="slider">
+        <button onclick="prevSlide()">◀</button>
+
+        <a id="link" href="#bursa">
+            <img id="sliderImage" src="İmages/BursaGörsel1.jpg" alt="Bursa slider görseli">
+        </a>
+
+        <button onclick="nextSlide()">▶</button>
+    </div>
+</section>
+
+<section class="city-info">
+
+    <div id="bursa" class="info-box">
+        <h2>Bursa Hakkında</h2>
+        <div class="city-layout">
+            <img src="İmages/Hakkındabursa.webp" alt="Bursa şehir görünümü">
+            <p>
+                Bursa, Osmanlı Devleti'nin ilk başkenti olarak tarih boyunca önemli bir rol üstlenmiştir.
+                Uludağ, tarihi çarşılar, camiler ve külliyelerle hem kültürel hem doğal zenginliği güçlü bir şehirdir.
+            </p>
+        </div>
+    </div>
+
+    <div id="takim" class="info-box">
+        <h2>Bursaspor ⚽</h2>
+        <div class="city-layout">
+            <img src="İmages/Bursaspor-amblem.png" alt="Bursaspor amblemi">
+            <p>
+                Bursaspor 1963 yılında kurulmuştur. 2009-2010 sezonunda Süper Lig şampiyonu olarak
+                Anadolu kulüpleri arasında unutulmaz bir başarıya imza atmıştır.
+            </p>
+        </div>
+    </div>
+
+    <div id="kultur" class="info-box">
+        <h2>Kültürel Yerler</h2>
+        <div class="city-layout">
+            <img src="İmages/Kültürelyerler.jpg" alt="Bursa kültürel yerler çini görseli">
+            <p>
+                Ulu Camii, Yeşil Türbe, Koza Han ve Cumalıkızık Bursa'nın kültürel belleğini oluşturan
+                en önemli miras noktalarıdır. Bu yapılar şehrin tarihini günümüze taşır.
+            </p>
+        </div>
+    </div>
+
+    <div id="lezzet" class="info-box">
+        <h2>Yöresel Lezzetler</h2>
+        <div class="flavor-grid">
+            <article class="flavor-item">
+                <img src="İmages/İskender.jpg" alt="İskender kebap">
+                <h3>İskender Kebap</h3>
+                <p>Bursa'nın dünya çapında tanınan lezzeti; döner eti, tereyağı, yoğurt ve özel sosla servis edilir.</p>
+            </article>
+
+            <article class="flavor-item">
+                <img src="İmages/Kestaneşekeri.jpg" alt="Kestane şekeri">
+                <h3>Kestane Şekeri</h3>
+                <p>Şehrin simge tatlılarından biridir. Bursa kestanesinin şekerle buluştuğu geleneksel bir lezzettir.</p>
+            </article>
+        </div>
+    </div>
+
+</section>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
