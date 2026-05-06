@@ -675,3 +675,559 @@ html {
 .cv-section article {
     margin-top: 10px;
 }
+/* ILGI ALANLARI */
+.ilgi-page {
+    background:
+        radial-gradient(circle at 12% 8%, rgba(56, 189, 248, 0.12), transparent 34%),
+        radial-gradient(circle at 88% 14%, rgba(148, 163, 184, 0.12), transparent 30%),
+        #0f172a;
+    position: relative;
+    overflow-x: clip;
+}
+
+.ilgi-page::before,
+.ilgi-page::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.ilgi-page::before {
+    left: 0;
+    background: linear-gradient(180deg, rgba(56, 189, 248, 0.35), rgba(15, 23, 42, 0));
+}
+
+.ilgi-page::after {
+    right: 0;
+    background: linear-gradient(180deg, rgba(125, 211, 252, 0.28), rgba(15, 23, 42, 0));
+}
+
+.ilgi-page header,
+.ilgi-page main {
+    position: relative;
+    z-index: 1;
+}
+
+.cv-page,
+.sehir-page,
+.miras-page {
+    background:
+        radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.1), transparent 34%),
+        radial-gradient(circle at 92% 12%, rgba(148, 163, 184, 0.1), transparent 30%),
+        #0f172a;
+    position: relative;
+    overflow-x: clip;
+}
+
+.cv-page::before,
+.cv-page::after,
+.sehir-page::before,
+.sehir-page::after,
+.miras-page::before,
+.miras-page::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 16px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cv-page::before,
+.sehir-page::before,
+.miras-page::before {
+    left: 0;
+    background: linear-gradient(180deg, rgba(56, 189, 248, 0.28), rgba(15, 23, 42, 0));
+}
+
+.cv-page::after,
+.sehir-page::after,
+.miras-page::after {
+    right: 0;
+    background: linear-gradient(180deg, rgba(125, 211, 252, 0.24), rgba(15, 23, 42, 0));
+}
+
+.cv-page header,
+.cv-page main,
+.sehir-page header,
+.sehir-page .city,
+.sehir-page .city-info,
+.miras-page header,
+.miras-page .city,
+.miras-page .city-info {
+    position: relative;
+    z-index: 1;
+}
+
+.cv-page main {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 18px 20px 65px;
+}
+
+.sehir-page .city,
+.miras-page .city {
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.sehir-page .city-info,
+.miras-page .city-info {
+    max-width: 1120px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.ilgi-page main {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 20px 20px 65px;
+}
+
+.ilgi-page .interest-header {
+    text-align: center;
+    margin-top: 34px;
+}
+
+.ilgi-page .interest-header p {
+    max-width: 850px;
+    margin: 0 auto;
+    color: #cbd5e1;
+    line-height: 1.7;
+}
+
+.ilgi-page .interest-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 30px;
+}
+
+.ilgi-page .interest-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.ilgi-page .interest-link .interest-card {
+    cursor: pointer;
+}
+
+.ilgi-page .interest-link:hover .interest-card,
+.ilgi-page .interest-link:focus-visible .interest-card {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    border-left-color: #7dd3fc;
+}
+
+.ilgi-page .interest-link:focus-visible {
+    outline: 2px solid #7dd3fc;
+    outline-offset: 4px;
+    border-radius: 12px;
+}
+
+.ilgi-page .interest-card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid #38bdf8;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
+    transition: 0.25s;
+}
+
+.ilgi-page .interest-card:hover {
+    transform: scale(1.02);
+}
+
+.ilgi-page .interest-card h2 {
+    color: #38bdf8;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.ilgi-page .interest-card p {
+    color: #cbd5e1;
+    margin: 0;
+    line-height: 1.65;
+}
+
+.ilgi-page .dev-section {
+    margin-top: 34px;
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 24px;
+    border-left: 4px solid #38bdf8;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.ilgi-page .dev-section h2 {
+    margin-top: 0;
+    color: #38bdf8;
+    margin-bottom: 16px;
+}
+
+.ilgi-page .dev-item {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 14px;
+}
+
+.ilgi-page .dev-item + .dev-item {
+    margin-top: 14px;
+}
+
+.ilgi-page .dev-item img {
+    width: 220px;
+    max-width: 100%;
+    height: 130px;
+    object-fit: contain;
+    background: #020617;
+    border-radius: 10px;
+}
+
+.ilgi-page .dev-item h3 {
+    margin: 0 0 8px;
+    color: #7dd3fc;
+}
+
+.ilgi-page .dev-item p {
+    margin: 0;
+    color: #cbd5e1;
+    line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+    .ilgi-page .interest-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .ilgi-page .dev-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ilgi-page .dev-item img {
+        width: 100%;
+        height: auto;
+    }
+
+    .ilgi-page .hardware-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ilgi-page .hardware-item img {
+        width: 100%;
+        height: auto;
+    }
+
+    .ilgi-page .hardware-item-large img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.ilgi-page .hardware-section {
+    margin-top: 34px;
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 24px;
+    border-left: 4px solid #38bdf8;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.ilgi-page .hardware-section h2 {
+    margin-top: 0;
+    color: #38bdf8;
+    margin-bottom: 16px;
+}
+
+.ilgi-page .hardware-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 14px;
+}
+
+.ilgi-page .hardware-item + .hardware-item {
+    margin-top: 14px;
+}
+
+.ilgi-page .hardware-item img {
+    width: 240px;
+    max-width: 100%;
+    height: 160px;
+    object-fit: contain;
+    background: #020617;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.ilgi-page .hardware-item h3 {
+    margin: 0 0 8px;
+    color: #7dd3fc;
+}
+
+.ilgi-page .hardware-item p {
+    margin: 0;
+    color: #cbd5e1;
+    line-height: 1.7;
+}
+
+.ilgi-page .hardware-item-large {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 14px;
+}
+
+.ilgi-page .hardware-item-large img {
+    width: 100%;
+    max-width: 600px;
+    height: 280px;
+    object-fit: contain;
+    background: #020617;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.ilgi-page .hardware-item-large h3 {
+    margin: 0 0 12px;
+    color: #7dd3fc;
+}
+
+.ilgi-page .hardware-item-large p {
+    margin: 0;
+    color: #cbd5e1;
+    line-height: 1.8;
+}
+
+mark {
+    background: transparent;
+    border-bottom: 2px solid rgba(125, 211, 252, 0.4);
+    padding-bottom: 2px;
+    color: #cbd5e1;
+}
+
+.ilgi-page .automotive-section {
+    margin-top: 34px;
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 24px;
+    border-left: 4px solid #38bdf8;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.ilgi-page .automotive-section h2 {
+    margin-top: 0;
+    color: #38bdf8;
+    margin-bottom: 16px;
+}
+
+.ilgi-page .auto-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 14px;
+}
+
+.ilgi-page .auto-item + .auto-item {
+    margin-top: 14px;
+}
+
+.ilgi-page .auto-item img {
+    width: 240px;
+    max-width: 100%;
+    height: 160px;
+    object-fit: contain;
+    background: #020617;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.ilgi-page .auto-item h3 {
+    margin: 0 0 8px;
+    color: #7dd3fc;
+}
+
+.ilgi-page .auto-item p {
+    margin: 0;
+    color: #cbd5e1;
+    line-height: 1.7;
+}
+
+.ilgi-page .auto-item-large {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 14px;
+}
+
+.ilgi-page .auto-item-large h3 {
+    margin: 0 0 12px;
+    color: #7dd3fc;
+}
+
+.ilgi-page .auto-item-large p {
+    margin: 0 0 14px;
+    color: #cbd5e1;
+    line-height: 1.8;
+}
+
+.ilgi-page .auto-item-large p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+    .ilgi-page .auto-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ilgi-page .auto-item img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* STEAM OYUN KARTLARI */
+.ilgi-page .steam-section {
+    margin-top: 34px;
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 24px;
+    border-left: 4px solid #38bdf8;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.ilgi-page .steam-section h2 {
+    margin-top: 0;
+    color: #38bdf8;
+    margin-bottom: 16px;
+}
+
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 0;
+}
+
+.game-card {
+    background: #0f172a;
+    border: 1px solid #334155;
+    padding: 14px;
+    border-radius: 12px;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.game-card:hover {
+    transform: scale(1.03);
+    border-color: #38bdf8;
+}
+
+.game-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.game-card h2 {
+    font-size: 14px;
+    margin: 6px 0 8px;
+    color: #e2e8f0;
+}
+
+.discount {
+    color: #22c55e;
+    font-weight: bold;
+}
+
+.no-discount {
+    color: #ef4444;
+    font-weight: bold;
+}
+
+@media (max-width: 900px) {
+    .game-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 500px) {
+    .game-container {
+        grid-template-columns: 1fr;
+    }
+}
+/* TEKNOLOJI HABERLERI */
+.ilgi-page .news-section {
+    margin-top: 34px;
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 24px;
+    border-left: 4px solid #38bdf8;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.ilgi-page .news-section h2 {
+    margin: 0 0 14px;
+    color: #38bdf8;
+}
+
+#news-container {
+    display: grid;
+    gap: 12px;
+}
+
+.news-card {
+    background: #0f172a;
+    border: 1px solid #334155;
+    padding: 16px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.news-card:hover {
+    transform: translateY(-2px);
+    border-color: #38bdf8;
+}
+
+.news-card h2 {
+    color: #38bdf8;
+    margin: 0 0 8px;
+    font-size: 18px;
+}
+
+.news-card p {
+    margin: 0 0 10px;
+    color: #cbd5e1;
+    line-height: 1.65;
+}
+
+.news-card a {
+    color: #7dd3fc;
+    text-decoration: none;
+    font-weight: 700;
+}
