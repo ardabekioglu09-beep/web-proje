@@ -31,6 +31,7 @@ body {
 }
 
 .site-navbar .nav-link:hover,
+.site-navbar .nav-link.active,
 .site-navbar .nav-link:focus-visible {
     color: #38bdf8;
 }
@@ -48,19 +49,6 @@ body {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28226,232,240,0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* HERO */
-.hero {
-    text-align: center;
-    margin-top: 120px;
-}
-
-.hero h1 {
-    font-size: 40px;
-}
-
-.hero p {
-    color: #94a3b8;
-}
 /* ABOUT */
 .about {
     display: flex;
@@ -83,36 +71,10 @@ body {
     transform: scale(1.03);
 }
 
-.about-card img {
-    border-radius: 50%;
-    width: 150px;
-}
-
 .about-text h2 {
     margin-bottom: 10px;
 }
-/* CV */
-.cv-header {
-    text-align: center;
-    margin-top: 50px;
-}
 
-.cv-section {
-    max-width: 800px;
-    margin: 30px auto;
-    background: #1e293b;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.cv-section h2 {
-    border-bottom: 2px solid #38bdf8;
-    padding-bottom: 5px;
-}
-
-.cv-section article {
-    margin-top: 15px;
-}
 /* CITY */
 .city {
     text-align: center;
@@ -412,6 +374,13 @@ body {
 
 .kosul-link:hover {
     color: #7dd3fc;
+}
+
+/* Hata sayısı özeti */
+#js-error-count {
+    font-size: 0.9rem;
+    margin-top: 5px;
+    opacity: 0.9;
 }
 
 /* Textarea karakter sayısı */
@@ -732,6 +701,7 @@ body {
 .cv-page .cv-header {
     max-width: 900px;
     margin: 50px auto 20px;
+    text-align: center;
 }
 
 .cv-page .cv-header p {
@@ -740,6 +710,10 @@ body {
 
 .cv-page .cv-section {
     max-width: 920px;
+    margin: 30px auto;
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 12px;
     border-left: 4px solid #38bdf8;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     transition: 0.3s;
@@ -1025,36 +999,13 @@ body {
 html {
     scroll-behavior: smooth;
 }
-/* CV HEADER */
-.cv-header {
-    text-align: center;
-    margin-top: 40px;
+
+/* FOOTER */
+.site-footer {
+    border-top: 1px solid #1e293b;
+    color: #475569;
 }
 
-/* CV SECTION */
-.cv-section {
-    max-width: 800px;
-    margin: 30px auto;
-    background: #1e293b;
-    padding: 20px;
-    border-radius: 12px;
-    transition: 0.3s;
-}
-
-.cv-section:hover {
-    transform: scale(1.03);
-}
-
-/* BAŞLIKLAR */
-.cv-section h2 {
-    color: #38bdf8;
-    border-bottom: 2px solid #38bdf8;
-    padding-bottom: 5px;
-}
-
-.cv-section article {
-    margin-top: 10px;
-}
 /* ILGI ALANLARI */
 .ilgi-page {
     background:

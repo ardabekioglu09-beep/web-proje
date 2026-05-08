@@ -64,35 +64,16 @@ const gameContainer = document.getElementById("game-data");
 
 if (gameContainer) {
     games.forEach(game => {
-
-        let discountText = "";
-
-        if (game.discount > 0) {
-
-            discountText = `
-            <p class="discount">%${game.discount} İndirim</p>
-            <p><del>${game.oldPrice}</del></p>
-            <p>${game.newPrice}</p>
-        `;
-
-        } else {
-
-            discountText = `
-            <p class="no-discount">Şu anda indirim yok</p>
-        `;
-        }
+        let discountText = game.discount > 0
+            ? `<p class="discount">%${game.discount} İndirim</p><p><del>${game.oldPrice}</del></p><p>${game.newPrice}</p>`
+            : `<p class="no-discount">Şu anda indirim yok</p>`;
 
         gameContainer.innerHTML += `
         <div class="game-card">
-
-            <img src="${game.image}">
-
+            <img src="${game.image}" alt="${game.name}">
             <h2>${game.name}</h2>
-
             ${discountText}
-
-        </div>
-    `;
+        </div>`;
     });
 }
 const apiKey = "24f045ee0ae8453dbb8d60e188f2b47f";
@@ -100,30 +81,33 @@ const newsContainer = document.getElementById("news-container");
 
 if (newsContainer) {
     fetch(`https://newsapi.org/v2/everything?q=technology OR gaming OR NVIDIA OR Tesla&language=tr&sortBy=publishedAt&pageSize=5&apiKey=${apiKey}`)
+        .then(response => response.json())
+        .then(data => {
+            if (!data.articles) return;
 
-    .then(response => response.json())
+            data.articles.forEach(article => {
+                const card = document.createElement('div');
+                card.className = 'news-card';
 
-    .then(data => {
+                const title = document.createElement('h2');
+                title.textContent = article.title;
 
-        if (!data.articles) {
-            return;
-        }
+                const desc = document.createElement('p');
+                desc.textContent = article.description || 'Açıklama bulunamadı.';
 
-        data.articles.forEach(article => {
+                const link = document.createElement('a');
+                link.href = article.url;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.textContent = 'Haberi Oku';
 
-            newsContainer.innerHTML += `
-            <div class="news-card">
-                <h2>${article.title}</h2>
-                <p>${article.description || "Açıklama bulunamadı."}</p>
-                <a href="${article.url}" target="_blank">
-                    Haberi Oku
-                </a>
-            </div>
-            `;
+                card.appendChild(title);
+                card.appendChild(desc);
+                card.appendChild(link);
+                newsContainer.appendChild(card);
+            });
+        })
+        .catch(error => {
+            console.error('News API hatası:', error);
         });
-
-    })
-    .catch(error => {
-        console.error("News API hatası:", error);
-    });
 }
