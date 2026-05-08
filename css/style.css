@@ -7,31 +7,45 @@ body {
 }
 
 /* NAVBAR */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 30px;
+.site-navbar {
+    padding: 10px 0;
     background: #1e293b;
 }
 
 .logo {
     color: #38bdf8;
-}
-
-.navbar ul {
-    display: flex;
-    gap: 20px;
-    list-style: none;
-}
-
-.navbar a {
     text-decoration: none;
-    color: white;
-    transition: 0.3s;
+    font-weight: 700;
 }
 
-.navbar a:hover {
+.site-navbar .navbar-nav {
+    gap: 8px;
+}
+
+.site-navbar .nav-link {
+    text-decoration: none;
+    color: #e2e8f0;
+    transition: 0.3s;
+    font-weight: 500;
+    padding: 8px 10px;
+}
+
+.site-navbar .nav-link:hover,
+.site-navbar .nav-link:focus-visible {
     color: #38bdf8;
+}
+
+.site-navbar .navbar-toggler {
+    border: 1px solid #334155;
+    padding: 6px 10px;
+}
+
+.site-navbar .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(56, 189, 248, 0.3);
+}
+
+.site-navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28226,232,240,0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 /* HERO */
@@ -154,22 +168,393 @@ body {
         #0f172a;
 }
 
-.home-page .navbar {
+.home-page .site-navbar {
     border-bottom: 1px solid rgba(148, 163, 184, 0.2);
 }
 
+@media (max-width: 991px) {
+    .site-navbar .navbar-collapse {
+        margin-top: 12px;
+        background: #0f172a;
+        border: 1px solid #334155;
+        border-radius: 12px;
+        padding: 10px;
+    }
+
+    .site-navbar .nav-link {
+        border-radius: 8px;
+    }
+
+    .site-navbar .nav-link:hover,
+    .site-navbar .nav-link:focus-visible {
+        background: rgba(56, 189, 248, 0.1);
+    }
+}
+
 .home-page main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 24px 20px 70px;
+    padding: 24px 0 70px;
 }
 
 .home-page .home-hero {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 28px;
-    align-items: center;
     margin-top: 24px;
+}
+
+/* ══════════════════════════════
+   CONTACT PAGE
+══════════════════════════════ */
+
+/* ANIMASYONLAR */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contact-main {
+    padding-top: 50px;
+    padding-bottom: 80px;
+    max-width: 860px;
+}
+
+.contact-header {
+    margin-bottom: 36px;
+}
+
+.contact-header h1 {
+    font-size: 2.2rem;
+    color: #f1f5f9;
+}
+
+.contact-subtitle {
+    color: #94a3b8;
+    font-size: 1rem;
+}
+
+.contact-alert {
+    border-radius: 10px;
+    margin-bottom: 20px;
+    animation: slideDown 0.3s ease-out;
+}
+
+.contact-alert.alert-danger {
+    background: #7f1d1d;
+    border-color: #dc2626;
+}
+
+.contact-alert.alert-danger strong {
+    color: #fecaca;
+}
+
+.contact-alert.alert-danger ul li {
+    color: #fca5a5;
+}
+
+.contact-alert.alert-success {
+    background: #065f46;
+    border-color: #10b981;
+}
+
+.contact-alert.alert-success strong {
+    color: #a7f3d0;
+}
+
+.form-card {
+    background: #1e293b;
+    border-radius: 14px;
+    padding: 28px 30px;
+    border: 1px solid #334155;
+    transition: border-color 0.3s;
+}
+
+.form-card:hover {
+    border-color: #475569;
+}
+
+.form-section-title {
+    color: #38bdf8;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.contact-input {
+    background: #0f172a;
+    border: 1.5px solid #334155;
+    color: #e2e8f0;
+    border-radius: 8px;
+    transition: border-color 0.25s, box-shadow 0.25s, background 0.2s;
+}
+
+.contact-input:focus {
+    background: #162447;
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 0.2rem rgba(56, 189, 248, 0.2);
+    color: #f1f5f9;
+}
+
+.contact-input:invalid:not(:placeholder-shown) {
+    border-color: #f87171;
+}
+
+.contact-input::placeholder {
+    color: #475569;
+}
+
+.contact-input option {
+    background: #1e293b;
+    color: #e2e8f0;
+}
+
+/* Date input calendar icon rengi */
+.contact-input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.6);
+    cursor: pointer;
+}
+
+/* Range */
+.contact-range {
+    accent-color: #38bdf8;
+    width: 100%;
+}
+
+.range-labels {
+    color: #64748b;
+    font-size: 0.78rem;
+    margin-top: 4px;
+}
+
+.memnuniyet-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+    color: #0f172a;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-left: 8px;
+    min-width: 50px;
+    text-align: center;
+}
+
+/* Radio & Checkbox groups */
+.contact-radio-group,
+.contact-check-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+}
+
+.contact-check {
+    color: #cbd5e1;
+}
+
+.contact-check .form-check-input {
+    background-color: #0f172a;
+    border-color: #475569;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    transition: all 0.2s;
+}
+
+.contact-check .form-check-input:hover {
+    border-color: #38bdf8;
+}
+
+.contact-check .form-check-input:checked {
+    background-color: #38bdf8;
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 0.25rem rgba(56, 189, 248, 0.2);
+}
+
+.contact-check .form-check-label {
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Error messages */
+.vue-error {
+    color: #f87171;
+    font-size: 0.82rem;
+    margin-top: 4px;
+    display: block;
+    font-weight: 500;
+    animation: slideDown 0.2s ease-out;
+}
+
+.js-error {
+    color: #fbbf24;
+    font-size: 0.82rem;
+    margin-top: 4px;
+    display: block;
+    font-weight: 500;
+    animation: slideDown 0.2s ease-out;
+}
+
+.required {
+    color: #f87171;
+    font-weight: 700;
+}
+
+.kosul-link {
+    color: #38bdf8;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+
+.kosul-link:hover {
+    color: #7dd3fc;
+}
+
+/* Textarea karakter sayısı */
+#mesaj {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-text {
+    color: #64748b !important;
+    font-size: 0.8rem;
+    margin-top: 3px;
+}
+
+/* Buttons */
+.contact-btn-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+    padding: 20px 0;
+}
+
+.contact-btn-vue {
+    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+    color: #0f172a;
+    font-weight: 700;
+    border: none;
+    padding: 13px 32px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+}
+
+.contact-btn-vue:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+    color: #0f172a;
+}
+
+.contact-btn-vue:active {
+    transform: translateY(0);
+}
+
+.contact-btn-js {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: #1f2937;
+    font-weight: 700;
+    border: none;
+    padding: 13px 32px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+}
+
+.contact-btn-js:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
+    color: #1f2937;
+}
+
+.contact-btn-js:active {
+    transform: translateY(0);
+}
+
+.btn-icon {
+    margin-right: 6px;
+    font-size: 1.1em;
+}
+
+/* Submit Button */
+.contact-submit-row {
+    display: flex;
+    justify-content: center;
+    padding: 30px 0 20px;
+    border-top: 2px solid #1e293b;
+}
+
+.contact-btn-submit {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    font-weight: 700;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    cursor: not-allowed;
+}
+
+.contact-btn-submit:not(:disabled) {
+    cursor: pointer;
+}
+
+.contact-btn-submit:not(:disabled):hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(16, 185, 129, 0.5);
+    background: linear-gradient(135deg, #059669, #047857);
+}
+
+.contact-btn-submit:not(:disabled):active {
+    transform: translateY(0);
+}
+
+@media (max-width: 576px) {
+    .contact-submit-row {
+        padding: 20px 0;
+    }
+
+    .contact-btn-submit {
+        width: 100%;
+        text-align: center;
+    }
+
+    .form-card {
+        padding: 20px 16px;
+    }
+
+    .contact-btn-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .contact-btn-vue,
+    .contact-btn-js {
+        width: 100%;
+        text-align: center;
+    }
+
+    .contact-radio-group,
+    .contact-check-group {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
 
 .home-page .home-hero-text {
@@ -270,11 +655,15 @@ body {
     border: 1px solid #334155;
     border-radius: 18px;
     padding: 14px;
+    width: min(100%, 360px);
+    margin-left: auto;
+    margin-right: auto;
     animation: floatCard 4s ease-in-out infinite;
 }
 
 .home-page .home-hero-visual img {
     width: 100%;
+    aspect-ratio: 4 / 5;
     border-radius: 14px;
     object-fit: cover;
 }
@@ -623,10 +1012,6 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .home-page .home-hero {
-        grid-template-columns: 1fr;
-    }
-
     .home-page .hero-stats {
         grid-template-columns: 1fr;
     }
@@ -639,11 +1024,6 @@ body {
 /* smooth scroll */
 html {
     scroll-behavior: smooth;
-}
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
 }
 /* CV HEADER */
 .cv-header {
@@ -765,31 +1145,27 @@ html {
 }
 
 .cv-page main {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 18px 20px 65px;
+    padding: 18px 0 65px;
 }
 
 .sehir-page .city,
 .miras-page .city {
-    max-width: 1120px;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .sehir-page .city-info,
 .miras-page .city-info {
-    max-width: 1120px;
-    padding-left: 20px;
-    padding-right: 20px;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .ilgi-page main {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 20px 20px 65px;
+    padding: 20px 0 65px;
 }
 
 .ilgi-page .interest-header {
