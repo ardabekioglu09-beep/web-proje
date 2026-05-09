@@ -61,7 +61,7 @@
         </div>
 
         <!-- ══════════ FORM ══════════ -->
-        <form class="contact-form" novalidate @submit.prevent>
+        <form class="contact-form" novalidate method="post" action="sonuc.php" enctype="multipart/form-data" @submit.prevent>
 
             <div class="form-card">
                 <h5 class="form-section-title">Kişisel Bilgiler</h5>
@@ -70,7 +70,7 @@
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label for="ad" class="form-label">Ad <span class="required">*</span></label>
-                        <input type="text" id="ad" class="form-control contact-input"
+                           <input type="text" id="ad" name="ad" class="form-control contact-input"
                                v-model.trim="form.ad" placeholder="Adınızı giriniz">
                         <!-- Vue hatası -->
                         <div v-if="errors.ad" class="vue-error">{{ errors.ad }}</div>
@@ -80,7 +80,7 @@
 
                     <div class="col-md-6">
                         <label for="soyad" class="form-label">Soyad <span class="required">*</span></label>
-                        <input type="text" id="soyad" class="form-control contact-input"
+                           <input type="text" id="soyad" name="soyad" class="form-control contact-input"
                                v-model.trim="form.soyad" placeholder="Soyadınızı giriniz">
                         <div v-if="errors.soyad" class="vue-error">{{ errors.soyad }}</div>
                         <div id="soyad-js-error" class="js-error"></div>
@@ -91,7 +91,7 @@
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label for="email" class="form-label">E-posta <span class="required">*</span></label>
-                        <input type="email" id="email" class="form-control contact-input"
+                           <input type="email" id="email" name="email" class="form-control contact-input"
                                v-model.trim="form.email" placeholder="ornek@mail.com">
                         <div v-if="errors.email" class="vue-error">{{ errors.email }}</div>
                         <div id="email-js-error" class="js-error"></div>
@@ -99,7 +99,7 @@
 
                     <div class="col-md-6">
                         <label for="telefon" class="form-label">Telefon <span class="required">*</span></label>
-                        <input type="text" id="telefon" class="form-control contact-input"
+                           <input type="text" id="telefon" name="telefon" class="form-control contact-input"
                                v-model.trim="form.telefon" placeholder="05xxxxxxxxx"
                                maxlength="11">
                         <div class="form-text">Sadece rakam giriniz (örn: 05551234567)</div>
@@ -112,7 +112,7 @@
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label for="dogumTarihi" class="form-label">Doğum Tarihi <span class="required">*</span></label>
-                        <input type="date" id="dogumTarihi" class="form-control contact-input"
+                           <input type="date" id="dogumTarihi" name="dogumTarihi" class="form-control contact-input"
                                v-model="form.dogumTarihi">
                         <div v-if="errors.dogumTarihi" class="vue-error">{{ errors.dogumTarihi }}</div>
                         <div id="dogumTarihi-js-error" class="js-error"></div>
@@ -121,7 +121,7 @@
                     <!-- Şehir (datalist) -->
                     <div class="col-md-6">
                         <label for="sehir" class="form-label">Şehir</label>
-                        <input type="text" id="sehir" class="form-control contact-input"
+                           <input type="text" id="sehir" name="sehir" class="form-control contact-input"
                                v-model.trim="form.sehir" placeholder="Şehrinizi seçin veya yazın"
                                list="sehir-listesi">
                         <datalist id="sehir-listesi">
@@ -176,7 +176,7 @@
                     <!-- Yaş Grubu (Select) -->
                     <div class="col-md-6">
                         <label for="yasGrubu" class="form-label">Yaş Grubu <span class="required">*</span></label>
-                        <select id="yasGrubu" class="form-select contact-input" v-model="form.yasGrubu">
+                        <select id="yasGrubu" name="yasGrubu" class="form-select contact-input" v-model="form.yasGrubu">
                             <option value="">-- Seçiniz --</option>
                             <option value="18-25">18 – 25</option>
                             <option value="26-35">26 – 35</option>
@@ -190,7 +190,7 @@
                     <!-- İletişim Tercihi (Select) -->
                     <div class="col-md-6">
                         <label for="iletisimTercihi" class="form-label">İletişim Tercihi <span class="required">*</span></label>
-                        <select id="iletisimTercihi" class="form-select contact-input" v-model="form.iletisimTercihi">
+                        <select id="iletisimTercihi" name="iletisimTercihi" class="form-select contact-input" v-model="form.iletisimTercihi">
                             <option value="">-- Seçiniz --</option>
                             <option value="eposta">E-posta</option>
                             <option value="telefon">Telefon</option>
@@ -206,7 +206,7 @@
                     <label class="form-label d-block">Mesaj Türü <span class="required">*</span> <small>(en az biri)</small></label>
                     <div class="contact-check-group">
                         <div class="form-check contact-check" v-for="tur in mesajTurleri" :key="tur.value">
-                            <input class="form-check-input" type="checkbox"
+                            <input class="form-check-input" type="checkbox" name="mesajTuru[]"
                                    :id="'tur-' + tur.value"
                                    :value="tur.value"
                                    v-model="form.mesajTuru">
@@ -223,7 +223,7 @@
                         Genel Memnuniyet Puanı:
                         <span class="memnuniyet-badge">{{ form.memnuniyet }} / 10</span>
                     </label>
-                    <input type="range" class="form-range contact-range" id="memnuniyet"
+                          <input type="range" class="form-range contact-range" id="memnuniyet" name="memnuniyet"
                            min="1" max="10" v-model.number="form.memnuniyet">
                     <div class="d-flex justify-content-between range-labels">
                         <small>1 – Çok Kötü</small>
@@ -239,7 +239,7 @@
                 <!-- Konu -->
                 <div class="mb-3">
                     <label for="konu" class="form-label">Konu <span class="required">*</span></label>
-                    <input type="text" id="konu" class="form-control contact-input"
+                          <input type="text" id="konu" name="konu" class="form-control contact-input"
                            v-model.trim="form.konu" placeholder="Mesajınızın konusunu giriniz">
                     <div v-if="errors.konu" class="vue-error">{{ errors.konu }}</div>
                     <div id="konu-js-error" class="js-error"></div>
@@ -251,7 +251,7 @@
                         Mesaj <span class="required">*</span>
                         <small>(en az 20 karakter)</small>
                     </label>
-                    <textarea id="mesaj" class="form-control contact-input" rows="5"
+                    <textarea id="mesaj" name="mesaj" class="form-control contact-input" rows="5"
                               v-model.trim="form.mesaj"
                               placeholder="Mesajınızı buraya yazınız..."></textarea>
                     <div class="d-flex justify-content-end mt-1">
@@ -266,7 +266,7 @@
                 <!-- Dosya Yükleme -->
                 <div class="mb-3">
                     <label for="dosya" class="form-label">Dosya Ekle <small>(isteğe bağlı, max 5 MB)</small></label>
-                    <input type="file" id="dosya" class="form-control contact-input"
+                          <input type="file" id="dosya" name="dosya" class="form-control contact-input"
                            accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
                            @change="handleDosya">
                     <div class="form-text">İzin verilen formatlar: PDF, DOC, DOCX, JPG, PNG</div>
@@ -277,7 +277,7 @@
                 <!-- Kullanım Koşulları -->
                 <div class="mb-3">
                     <div class="form-check contact-check">
-                        <input class="form-check-input" type="checkbox" id="kosullar" v-model="form.kosullar">
+                        <input class="form-check-input" type="checkbox" id="kosullar" name="kosullar" value="1" v-model="form.kosullar">
                         <label class="form-check-label" for="kosullar">
                             <a href="#" class="kosul-link">Kullanım koşullarını</a> ve
                             <a href="#" class="kosul-link">Gizlilik Politikasını</a> okudum, kabul ediyorum.
@@ -512,31 +512,11 @@ const app = createApp({
         /* ── FORMU GÖNDER ── */
         submitForm() {
             if (!this.formSubmitted) return;
-            
-            alert('✅ Form başarıyla gönderildi!\\n\\nAd: ' + this.form.ad + '\\nE-posta: ' + this.form.email);
-            
-            // Form reset
-            this.form = {
-                ad: '',
-                soyad: '',
-                email: '',
-                telefon: '',
-                dogumTarihi: '',
-                sehir: '',
-                cinsiyet: '',
-                yasGrubu: '',
-                iletisimTercihi: '',
-                mesajTuru: [],
-                memnuniyet: 5,
-                konu: '',
-                mesaj: '',
-                dosya: null,
-                kosullar: false
-            };
-            this.errors = {};
-            this.vueSuccess = false;
-            this.formSubmitted = false;
-            document.getElementById('submitBtn').disabled = true;
+
+            const formEl = document.querySelector('.contact-form');
+            if (formEl) {
+                formEl.submit();
+            }
         }
     }
 });
@@ -691,6 +671,9 @@ function validateWithJS() {
 
     /* ═══ SONUÇ ═══ */
     if (errors.length > 0) {
+        if (vueAppInstance) {
+            vueAppInstance.formSubmitted = false;
+        }
         const list = document.getElementById('js-error-list');
         list.innerHTML = ''; // Önce temizle
         errors.forEach(err => {
@@ -705,6 +688,9 @@ function validateWithJS() {
         // Buton pasif kalsın
         document.getElementById('submitBtn').disabled = true;
     } else {
+        if (vueAppInstance) {
+            vueAppInstance.formSubmitted = true;
+        }
         document.getElementById('js-success').classList.remove('d-none');
         document.getElementById('js-success').style.animation = 'slideDown 0.3s ease-out';
         // Buton aktif et
