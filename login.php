@@ -47,7 +47,7 @@ setcookie('auth', '1', time() + 3600, '/');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giris Basarili</title>
+    <title>Giriş Başarılı</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -77,16 +77,21 @@ setcookie('auth', '1', time() + 3600, '/');
     <main class="container result-main">
         <section class="result-card">
             <div class="result-hero">
-                <span class="result-chip">Giris Durumu</span>
-                <h1>Hosgeldiniz <?php echo e($studentNo); ?></h1>
-                <p>Kimlik dogrulama basarili. Sisteme guvenli sekilde giris yaptiniz.</p>
+                <span class="result-chip">Giriş Durumu</span>
+                <h1>Hoşgeldiniz <?php echo e($studentNo); ?></h1>
+                <p>Kimlik doğrulama başarılı. Sisteme güvenli şekilde giriş yaptınız.</p>
             </div>
             <div class="result-actions">
                 <a href="index.html" class="result-btn">Ana Sayfaya Git</a>
-                <a href="login.html" class="result-btn result-btn-secondary">Farkli Hesapla Giris Yap</a>
+                <a href="login.html" class="result-btn result-btn-secondary">Farklı Hesapla Giriş Yap</a>
             </div>
         </section>
     </main>
+
+    <footer class="site-footer text-center py-4 mt-5">
+        <small>© 2025 Arda — Tüm hakları saklıdır.</small>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

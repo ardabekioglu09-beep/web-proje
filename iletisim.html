@@ -92,7 +92,7 @@
                     <div class="col-md-6">
                         <label for="email" class="form-label">E-posta <span class="required">*</span></label>
                            <input type="email" id="email" name="email" class="form-control contact-input"
-                               v-model.trim="form.email" placeholder="ornek@mail.com">
+                               v-model.trim="form.email" placeholder="ornek@gmail.com">
                         <div v-if="errors.email" class="vue-error">{{ errors.email }}</div>
                         <div id="email-js-error" class="js-error"></div>
                     </div>
@@ -113,7 +113,7 @@
                     <div class="col-md-6">
                         <label for="dogumTarihi" class="form-label">Doğum Tarihi <span class="required">*</span></label>
                            <input type="date" id="dogumTarihi" name="dogumTarihi" class="form-control contact-input"
-                               v-model="form.dogumTarihi">
+                               v-model="form.dogumTarihi" min="1900-01-01" max="2026-12-31">
                         <div v-if="errors.dogumTarihi" class="vue-error">{{ errors.dogumTarihi }}</div>
                         <div id="dogumTarihi-js-error" class="js-error"></div>
                     </div>
@@ -387,7 +387,7 @@ const app = createApp({
         /* ── ANLIk DOĞRULAMA: E-posta ── */
         'form.email'(newVal) {
             if (!newVal) return;
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/i;
             if (emailRegex.test(newVal) && this.errors.email) {
                 delete this.errors.email;
             }
@@ -441,9 +441,11 @@ const app = createApp({
             clearJsAlert();
 
             const e = {};
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/i;
             const telefonRegex = /^\d+$/;
             const izinliFormat = /\.(pdf|doc|docx|jpg|jpeg|png)$/i;
+            const minBirthYear = 1900;
+            const maxBirthYear = 2026;
 
             if (!this.form.ad)
                 e.ad = 'Ad alanı zorunludur.';
@@ -454,7 +456,7 @@ const app = createApp({
             if (!this.form.email) {
                 e.email = 'E-posta alanı zorunludur.';
             } else if (!emailRegex.test(this.form.email)) {
-                e.email = 'Geçerli bir e-posta adresi giriniz. (örn: ornek@mail.com)';
+                e.email = 'Geçerli ve tam bir e-posta giriniz. Sadece @gmail.com kabul edilir. (örn: ornek@gmail.com)';
             }
 
             if (!this.form.telefon) {
@@ -465,8 +467,14 @@ const app = createApp({
                 e.telefon = 'Telefon numarası 10-11 haneli olmalıdır.';
             }
 
-            if (!this.form.dogumTarihi)
+            if (!this.form.dogumTarihi) {
                 e.dogumTarihi = 'Doğum tarihi zorunludur.';
+            } else {
+                const dogumYili = Number(this.form.dogumTarihi.slice(0, 4));
+                if (!Number.isInteger(dogumYili) || dogumYili < minBirthYear || dogumYili > maxBirthYear) {
+                    e.dogumTarihi = 'Doğum yılı 1900 ile 2026 arasında olmalıdır.';
+                }
+            }
 
             if (!this.form.cinsiyet)
                 e.cinsiyet = 'Cinsiyet seçimi zorunludur.';
@@ -554,9 +562,11 @@ function validateWithJS() {
     clearJsAlert();
 
     const errors = [];
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/i;
     const telefonRegex = /^\d+$/;
     const izinliFormat = /\.(pdf|doc|docx|jpg|jpeg|png)$/i;
+    const minBirthYear = 1900;
+    const maxBirthYear = 2026;
 
     /* ═══ TEMEL KONTROLLER ═══ */
 
@@ -580,8 +590,8 @@ function validateWithJS() {
         errors.push('❌ E-posta alanı zorunludur.');
         setJsFieldError('email', 'E-posta alanı zorunludur.');
     } else if (!emailRegex.test(email)) {
-        errors.push('❌ Geçersiz e-posta formatı.');
-        setJsFieldError('email', 'E-posta formatı yanlış.');
+        errors.push('❌ Geçerli ve tam bir e-posta giriniz. Sadece @gmail.com kabul edilir. (örn: ornek@gmail.com)');
+        setJsFieldError('email', 'Sadece @gmail.com uzantılı e-posta kabul edilir.');
     }
 
     // Telefon - SADECE RAKAM KONTROLÜ
@@ -602,6 +612,12 @@ function validateWithJS() {
     if (!dogumTarihi) {
         errors.push('❌ Doğum tarihi zorunludur.');
         setJsFieldError('dogumTarihi', 'Doğum tarihi zorunludur.');
+    } else {
+        const dogumYili = Number(dogumTarihi.slice(0, 4));
+        if (!Number.isInteger(dogumYili) || dogumYili < minBirthYear || dogumYili > maxBirthYear) {
+            errors.push('❌ Doğum yılı 1900 ile 2026 arasında olmalıdır.');
+            setJsFieldError('dogumTarihi', 'Doğum yılı 1900-2026 aralığında olmalıdır.');
+        }
     }
 
     // Cinsiyet
