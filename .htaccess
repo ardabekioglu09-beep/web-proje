@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Public endpoints
+RewriteRule ^login\.html$ - [L]
+RewriteRule ^login\.php$ - [L]
+
+# Protect site pages unless authenticated via auth cookie
+RewriteCond %{HTTP:Cookie} !(^|;\s*)auth=1(;|$) [NC]
+RewriteRule ^(index\.html|cv\.html|sehir\.html|miras\.html|ilgi\.html|iletisim\.html|sonuc\.php)$ login.html [R=302,L]
