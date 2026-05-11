@@ -25,7 +25,7 @@
                     <li class="nav-item"><a class="nav-link" href="cv.html">Özgeçmiş</a></li>
                     <li class="nav-item"><a class="nav-link" href="sehir.html">Şehrim</a></li>
                     <li class="nav-item"><a class="nav-link" href="miras.html">Miras</a></li>
-                    <li class="nav-item"><a class="nav-link" href="ilgi.html">İlgi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ilgi.html">İlgi Alanlarım</a></li>
                     <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
                     <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
                 </ul>
@@ -38,7 +38,16 @@
     <section class="home-hero row g-4 align-items-center">
         <div class="home-hero-text col col-12 col-lg-7">
             <p class="hero-eyebrow">ARDA | PORTFOLIO</p>
-            <h1>Merhaba, ben Arda</h1>
+            <h1 class="visually-hidden">Merhaba, ben Arda</h1>
+            <div class="hero-terminal" aria-label="Karşılama mesajı" aria-live="polite">
+                <div class="hero-terminal-meta">
+                    <span class="hero-terminal-name">ARDA</span>
+                    <span class="hero-terminal-source">COMPUTER ENG.</span>
+                </div>
+                <p class="hero-terminal-line">
+                    <span id="heroTypewriterText">Merhaba, ben Arda. Sayfama hoş geldiniz.</span>
+                </p>
+            </div>
             <p class="hero-lead">Sakarya Üniversitesi Bilgisayar Mühendisliği 1. sınıf öğrencisi olarak yazılım alanında kendimi sürekli geliştiriyorum.</p>
 
             <div class="hero-stats">
@@ -96,6 +105,41 @@
     </section>
 </main>
 
+<script>
+    (function () {
+        const typewriterText = document.getElementById("heroTypewriterText");
+        if (!typewriterText) return;
+
+        const messages = [
+            "Merhaba, ben Arda. Sayfama hoş geldiniz."
+        ];
+
+        let charIndex = 0;
+
+        const typeDelay = 95;
+        const holdDelay = 900;
+
+        function loopTypewriter() {
+            const currentMessage = messages[0];
+            charIndex += 1;
+            typewriterText.textContent = currentMessage.slice(0, charIndex);
+
+            if (charIndex === currentMessage.length) {
+                setTimeout(function () {
+                    typewriterText.textContent = "";
+                    charIndex = 0;
+                    setTimeout(loopTypewriter, typeDelay);
+                }, holdDelay);
+                return;
+            }
+
+            setTimeout(loopTypewriter, typeDelay);
+        }
+
+        typewriterText.textContent = "";
+        loopTypewriter();
+    })();
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

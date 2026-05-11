@@ -1,4 +1,6 @@
 
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+
 body {
     margin: 0;
     font-family: Arial;
@@ -49,7 +51,7 @@ body {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28226,232,240,0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* ABOUT */
+/* HAKKIMDA */
 .about {
     display: flex;
     justify-content: center;
@@ -161,9 +163,113 @@ body {
     margin-top: 24px;
 }
 
-/* ══════════════════════════════
-   CONTACT PAGE
-══════════════════════════════ */
+.hero-terminal {
+    margin: 8px 0 10px;
+    width: min(100%, 620px);
+    min-height: 104px;
+    padding: 12px 16px;
+    border: 1px solid rgba(56, 189, 248, 0.45);
+    border-radius: 12px;
+    background:
+        repeating-linear-gradient(
+            180deg,
+            rgba(103, 232, 249, 0.03) 0,
+            rgba(103, 232, 249, 0.03) 2px,
+            rgba(2, 6, 23, 0.02) 2px,
+            rgba(2, 6, 23, 0.02) 4px
+        ),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(2, 6, 23, 0.96));
+    box-shadow: 0 12px 30px rgba(2, 132, 199, 0.22);
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+}
+
+.hero-terminal-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: "Share Tech Mono", "Courier New", monospace;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.hero-terminal-name {
+    font-size: 1.1rem;
+    color: #f8fafc;
+}
+
+.hero-terminal-source {
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+.hero-terminal-line {
+    margin: 0;
+    color: #dbeafe;
+    font-family: "Share Tech Mono", Consolas, "Courier New", monospace;
+    font-size: clamp(1rem, 1.65vw, 1.28rem);
+    line-height: 1.45;
+    letter-spacing: 0.05em;
+    display: block;
+    height: calc(1.45em * 2);
+    overflow: hidden;
+    max-width: 31ch;
+}
+
+#heroTypewriterText {
+    color: #e2e8f0;
+    display: inline-block;
+    max-height: calc(1.45em * 2);
+    white-space: normal;
+    word-break: break-word;
+    overflow: hidden;
+}
+
+#heroTypewriterText::after {
+    content: "";
+    display: inline-block;
+    width: 0.7em;
+    height: 0.95em;
+    margin-left: 0.1em;
+    border: 2px solid #67e8f9;
+    background: rgba(103, 232, 249, 0.25);
+    vertical-align: -0.08em;
+    animation: terminalCursorBlink 0.75s step-end infinite;
+}
+
+@keyframes terminalCursorBlink {
+    0%,
+    50% {
+        opacity: 1;
+    }
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-terminal {
+        min-height: 86px;
+        padding: 12px;
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .hero-terminal-meta {
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .hero-terminal-line {
+        max-width: 31ch;
+    }
+}
+
+/* ILETISIM */
 
 /* ANIMASYONLAR */
 @keyframes slideDown {
@@ -395,7 +501,7 @@ body {
     margin-top: 3px;
 }
 
-/* Buttons */
+/* ILETISIM - BUTTONS */
 .contact-btn-row {
     display: flex;
     gap: 16px;
@@ -405,9 +511,8 @@ body {
     padding: 20px 0;
 }
 
-.contact-btn-vue {
-    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
-    color: #0f172a;
+.contact-btn-vue,
+.contact-btn-js {
     font-weight: 700;
     border: none;
     padding: 13px 32px;
@@ -415,42 +520,39 @@ body {
     font-size: 0.95rem;
     transition: all 0.2s;
     cursor: pointer;
+}
+
+.contact-btn-vue {
+    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+    color: #0f172a;
     box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
 }
 
-.contact-btn-vue:hover {
+.contact-btn-vue:hover,
+.contact-btn-js:hover {
     opacity: 0.9;
     transform: translateY(-2px);
+}
+
+.contact-btn-vue:hover {
     box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
     color: #0f172a;
 }
 
-.contact-btn-vue:active {
+.contact-btn-vue:active,
+.contact-btn-js:active {
     transform: translateY(0);
 }
 
 .contact-btn-js {
     background: linear-gradient(135deg, #fbbf24, #f59e0b);
     color: #1f2937;
-    font-weight: 700;
-    border: none;
-    padding: 13px 32px;
-    border-radius: 10px;
-    font-size: 0.95rem;
-    transition: all 0.2s;
-    cursor: pointer;
     box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
 }
 
 .contact-btn-js:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
     color: #1f2937;
-}
-
-.contact-btn-js:active {
-    transform: translateY(0);
 }
 
 .btn-icon {
@@ -494,6 +596,7 @@ body {
     transform: translateY(0);
 }
 
+/* RESPONSIVE */
 @media (max-width: 576px) {
     .contact-submit-row {
         padding: 20px 0;
@@ -1186,7 +1289,11 @@ html {
     line-height: 1.65;
 }
 
-.ilgi-page .dev-section {
+.ilgi-page .dev-section,
+.ilgi-page .hardware-section,
+.ilgi-page .automotive-section,
+.ilgi-page .steam-section,
+.ilgi-page .news-section {
     margin-top: 34px;
     background: #1e293b;
     border-radius: 12px;
@@ -1195,7 +1302,11 @@ html {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
-.ilgi-page .dev-section h2 {
+.ilgi-page .dev-section h2,
+.ilgi-page .hardware-section h2,
+.ilgi-page .automotive-section h2,
+.ilgi-page .steam-section h2,
+.ilgi-page .news-section h2 {
     margin-top: 0;
     color: #38bdf8;
     margin-bottom: 16px;
@@ -1264,24 +1375,21 @@ html {
         width: 100%;
         height: auto;
     }
+
+    .ilgi-page .auto-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ilgi-page .auto-item img {
+        width: 100%;
+        height: auto;
+    }
 }
 
-.ilgi-page .hardware-section {
-    margin-top: 34px;
-    background: #1e293b;
-    border-radius: 12px;
-    padding: 24px;
-    border-left: 4px solid #38bdf8;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-}
 
-.ilgi-page .hardware-section h2 {
-    margin-top: 0;
-    color: #38bdf8;
-    margin-bottom: 16px;
-}
-
-.ilgi-page .hardware-item {
+.ilgi-page .hardware-item,
+.ilgi-page .auto-item {
     display: flex;
     gap: 16px;
     align-items: flex-start;
@@ -1291,11 +1399,13 @@ html {
     padding: 14px;
 }
 
-.ilgi-page .hardware-item + .hardware-item {
+.ilgi-page .hardware-item + .hardware-item,
+.ilgi-page .auto-item + .auto-item {
     margin-top: 14px;
 }
 
-.ilgi-page .hardware-item img {
+.ilgi-page .hardware-item img,
+.ilgi-page .auto-item img {
     width: 240px;
     max-width: 100%;
     height: 160px;
@@ -1305,18 +1415,21 @@ html {
     flex-shrink: 0;
 }
 
-.ilgi-page .hardware-item h3 {
+.ilgi-page .hardware-item h3,
+.ilgi-page .auto-item h3 {
     margin: 0 0 8px;
     color: #7dd3fc;
 }
 
-.ilgi-page .hardware-item p {
+.ilgi-page .hardware-item p,
+.ilgi-page .auto-item p {
     margin: 0;
     color: #cbd5e1;
     line-height: 1.7;
 }
 
-.ilgi-page .hardware-item-large {
+.ilgi-page .hardware-item-large,
+.ilgi-page .auto-item-large {
     background: #0f172a;
     border: 1px solid #334155;
     border-radius: 12px;
@@ -1353,55 +1466,7 @@ mark {
     color: #cbd5e1;
 }
 
-.ilgi-page .automotive-section {
-    margin-top: 34px;
-    background: #1e293b;
-    border-radius: 12px;
-    padding: 24px;
-    border-left: 4px solid #38bdf8;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-}
 
-.ilgi-page .automotive-section h2 {
-    margin-top: 0;
-    color: #38bdf8;
-    margin-bottom: 16px;
-}
-
-.ilgi-page .auto-item {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    background: #0f172a;
-    border: 1px solid #334155;
-    border-radius: 12px;
-    padding: 14px;
-}
-
-.ilgi-page .auto-item + .auto-item {
-    margin-top: 14px;
-}
-
-.ilgi-page .auto-item img {
-    width: 240px;
-    max-width: 100%;
-    height: 160px;
-    object-fit: contain;
-    background: #020617;
-    border-radius: 10px;
-    flex-shrink: 0;
-}
-
-.ilgi-page .auto-item h3 {
-    margin: 0 0 8px;
-    color: #7dd3fc;
-}
-
-.ilgi-page .auto-item p {
-    margin: 0;
-    color: #cbd5e1;
-    line-height: 1.7;
-}
 
 /* RESULT PAGE */
 .result-page {
@@ -1628,14 +1693,6 @@ mark {
     }
 }
 
-.ilgi-page .auto-item-large {
-    background: #0f172a;
-    border: 1px solid #334155;
-    border-radius: 12px;
-    padding: 20px;
-    margin-top: 14px;
-}
-
 .ilgi-page .auto-item-large h3 {
     margin: 0 0 12px;
     color: #7dd3fc;
@@ -1651,33 +1708,7 @@ mark {
     margin-bottom: 0;
 }
 
-@media (max-width: 900px) {
-    .ilgi-page .auto-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .ilgi-page .auto-item img {
-        width: 100%;
-        height: auto;
-    }
-}
-
 /* STEAM OYUN KARTLARI */
-.ilgi-page .steam-section {
-    margin-top: 34px;
-    background: #1e293b;
-    border-radius: 12px;
-    padding: 24px;
-    border-left: 4px solid #38bdf8;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-}
-
-.ilgi-page .steam-section h2 {
-    margin-top: 0;
-    color: #38bdf8;
-    margin-bottom: 16px;
-}
 
 .game-container {
     display: grid;
@@ -1734,18 +1765,8 @@ mark {
     }
 }
 /* TEKNOLOJI HABERLERI */
-.ilgi-page .news-section {
-    margin-top: 34px;
-    background: #1e293b;
-    border-radius: 12px;
-    padding: 24px;
-    border-left: 4px solid #38bdf8;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-}
-
 .ilgi-page .news-section h2 {
-    margin: 0 0 14px;
-    color: #38bdf8;
+    margin-bottom: 14px;
 }
 
 #news-container {
