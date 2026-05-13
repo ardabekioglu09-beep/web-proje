@@ -25,20 +25,20 @@ function redirectToLoginWithError($message, $mail = '')
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: login.html');
+    header('Location: login.html'); // Doğrudan erişimde form sayfasına dön
     exit;
 }
 
 // Formdan gelen kullanıcı bilgileri okunur ve doğrulanır
 $enteredMail = trim((string) ($_POST['ogrenci_mail'] ?? ''));
-$enteredStudentNo = trim((string) ($_POST['ogrenci_no'] ?? ''));
+$enteredStudentNo = trim((string) ($_POST['ogrenci_no'] ?? '')); // Form şifresi
 
 if ($enteredMail === '' || $enteredStudentNo === '') {
     redirectToLoginWithError('Kullanici adi ve sifre alanlari bos birakilamaz.', $enteredMail);
 }
 
 $studentNo = 'b251210573';
-$studentMail = $studentNo . '@sakarya.edu.tr';
+$studentMail = $studentNo . '@sakarya.edu.tr'; // Beklenen kullanıcı maili
 
 // Öğrenci numarası ve e-posta eşleşmesi kontrol edilir
 if (strtolower($enteredMail) !== strtolower($studentMail) || $enteredStudentNo !== $studentNo) {
@@ -46,7 +46,7 @@ if (strtolower($enteredMail) !== strtolower($studentMail) || $enteredStudentNo !
 }
 
 // Başarılı girişte oturum çerezi ayarlanır
-setcookie('auth', '1', time() + 3600, '/');
+setcookie('auth', '1', time() + 3600, '/'); // 1 saat giriş izni
 ?>
 <!DOCTYPE html>
 <html lang="tr">

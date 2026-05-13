@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo '<h2>Bu sayfa sadece form gonderimi ile acilmalidir.</h2>';
     echo '<p><a href="iletisim.html">Iletisim formuna don</a></p>';
     echo '</body></html>';
-    exit;
+    exit; // POST yoksa devam etme
 }
 
 $fields = [
@@ -46,14 +46,14 @@ $fields = [
 ];
 
 // Yüklenen dosyanın özet bilgisi hazırlanır
-$uploadedFileInfo = 'Yüklenen dosya yok.';
+$uploadedFileInfo = 'Yüklenen dosya yok.'; // Varsayılan dosya durumu
 if (isset($_FILES['dosya']) && $_FILES['dosya']['error'] === UPLOAD_ERR_OK) {
     $uploadedFileInfo = 'Dosya Adı: ' . e($_FILES['dosya']['name'])
         . ' | Boyut: ' . e((string) $_FILES['dosya']['size']) . ' byte'
         . ' | Tür: ' . e($_FILES['dosya']['type']);
 }
 
-$hasUploadedFile = isset($_FILES['dosya']) && $_FILES['dosya']['error'] === UPLOAD_ERR_OK;
+$hasUploadedFile = isset($_FILES['dosya']) && $_FILES['dosya']['error'] === UPLOAD_ERR_OK; // CSS durum sınıfı için
 ?>
 <!DOCTYPE html>
 <html lang="tr">
@@ -111,9 +111,9 @@ $hasUploadedFile = isset($_FILES['dosya']) && $_FILES['dosya']['error'] === UPLO
                                 <td>
                                     <?php
                                     if ($key === 'kosullar') {
-                                        echo isset($_POST[$key]) ? 'Kabul edildi' : 'Kabul edilmedi';
+                                        echo isset($_POST[$key]) ? 'Kabul edildi' : 'Kabul edilmedi'; // Checkbox metni
                                     } else {
-                                        echo displayValue($_POST[$key] ?? '');
+                                        echo displayValue($_POST[$key] ?? ''); // Alan değerini güvenli yazdır
                                     }
                                     ?>
                                 </td>

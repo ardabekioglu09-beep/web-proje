@@ -13,22 +13,22 @@ let targets = [
     "#lezzet"
 ];
 
-let index = 0;
+let index = 0; // Aktif slayt indeksi
 
 // Slayt görselini ve bağlantısını aynı anda günceller
 function showSlide(i) {
-    document.getElementById("sliderImage").src = images[i];
-    document.getElementById("link").href = targets[i];
+    document.getElementById("sliderImage").src = images[i]; // Görseli günceller
+    document.getElementById("link").href = targets[i]; // Hedef bölümü günceller
 }
 
 function nextSlide() {
-    index = (index + 1) % images.length;
+    index = (index + 1) % images.length; // Bir sonraki slayta geç
     showSlide(index);
 }
 
 // Bir önceki slayda geri döner
 function prevSlide() {
-    index = (index - 1 + images.length) % images.length;
+    index = (index - 1 + images.length) % images.length; // Bir önceki slayda dön
     showSlide(index);
 }
 
@@ -84,14 +84,14 @@ if (gameContainer) {
 }
 // Teknoloji haber akışı için News API anahtarı ve hedef konteyner
 const apiKey = "24f045ee0ae8453dbb8d60e188f2b47f";
-const newsContainer = document.getElementById("news-container");
+const newsContainer = document.getElementById("news-container"); // Haber kartlarının basılacağı alan
 
 // Haber alanı bulunan sayfalarda son teknoloji haberleri çekilir
 if (newsContainer) {
     fetch(`https://newsapi.org/v2/everything?q=technology OR gaming OR NVIDIA OR Tesla&language=tr&sortBy=publishedAt&pageSize=5&apiKey=${apiKey}`)
         .then(response => response.json())
         .then(data => {
-            if (!data.articles) return;
+            if (!data.articles) return; // API boş dönerse çık
 
             data.articles.forEach(article => {
                 const card = document.createElement('div');
