@@ -1,3 +1,4 @@
+// Bursa sayfasındaki slayt görselleri ve hedef bölümler
 let images = [
     "İmages/BursaGörsel1.jpg",
     "İmages/BursaGörsel2.jpg",
@@ -14,6 +15,7 @@ let targets = [
 
 let index = 0;
 
+// Slayt görselini ve bağlantısını aynı anda günceller
 function showSlide(i) {
     document.getElementById("sliderImage").src = images[i];
     document.getElementById("link").href = targets[i];
@@ -24,10 +26,13 @@ function nextSlide() {
     showSlide(index);
 }
 
+// Bir önceki slayda geri döner
 function prevSlide() {
     index = (index - 1 + images.length) % images.length;
     showSlide(index);
 }
+
+// İlgi alanları sayfasındaki kartların veri kaynağı
 const games = [
     {
         name: "Cyberpunk 2077",
@@ -62,6 +67,7 @@ const games = [
 
 const gameContainer = document.getElementById("game-data");
 
+// Steam indirim kartlarını sadece ilgili alan varsa oluşturur
 if (gameContainer) {
     games.forEach(game => {
         let discountText = game.discount > 0
@@ -76,9 +82,11 @@ if (gameContainer) {
         </div>`;
     });
 }
+// Teknoloji haber akışı için News API anahtarı ve hedef konteyner
 const apiKey = "24f045ee0ae8453dbb8d60e188f2b47f";
 const newsContainer = document.getElementById("news-container");
 
+// Haber alanı bulunan sayfalarda son teknoloji haberleri çekilir
 if (newsContainer) {
     fetch(`https://newsapi.org/v2/everything?q=technology OR gaming OR NVIDIA OR Tesla&language=tr&sortBy=publishedAt&pageSize=5&apiKey=${apiKey}`)
         .then(response => response.json())

@@ -1,13 +1,16 @@
 <?php
+// HTML içinde tekrar kullanılacak kaçış yardımcı fonksiyonu
 function e($value)
 {
     return htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');
 }
 
+// Tarayıcıya eski içerik gönderilmesini engelleyen önbellek başlıkları
 header('Cache-Control: no-cache, no-store, must-revalidate');
 header('Pragma: no-cache');
 header('Expires: 0');
 
+// Hatalı girişte kullanıcıyı login sayfasına hata mesajıyla yönlendirir
 function redirectToLoginWithError($message, $mail = '')
 {
     setcookie('auth', '', time() - 3600, '/');
@@ -26,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+// Formdan gelen kullanıcı bilgileri okunur ve doğrulanır
 $enteredMail = trim((string) ($_POST['ogrenci_mail'] ?? ''));
 $enteredStudentNo = trim((string) ($_POST['ogrenci_no'] ?? ''));
 
@@ -36,10 +40,12 @@ if ($enteredMail === '' || $enteredStudentNo === '') {
 $studentNo = 'b251210573';
 $studentMail = $studentNo . '@sakarya.edu.tr';
 
+// Öğrenci numarası ve e-posta eşleşmesi kontrol edilir
 if (strtolower($enteredMail) !== strtolower($studentMail) || $enteredStudentNo !== $studentNo) {
     redirectToLoginWithError('Kullanici adi veya sifre hatali.', $enteredMail);
 }
 
+// Başarılı girişte oturum çerezi ayarlanır
 setcookie('auth', '1', time() + 3600, '/');
 ?>
 <!DOCTYPE html>
@@ -53,6 +59,7 @@ setcookie('auth', '1', time() + 3600, '/');
 </head>
 <body class="result-page">
     <header>
+        <!-- Başarılı giriş sayfasının üst menüsü -->
         <nav class="navbar navbar-expand-lg site-navbar">
             <div class="container-fluid px-3 px-lg-4">
                 <span class="navbar-brand logo mb-0">Web Sayfam</span>
@@ -75,6 +82,7 @@ setcookie('auth', '1', time() + 3600, '/');
         </nav>
     </header>
     <main class="container result-main">
+        <!-- Giriş sonucu ve yönlendirme seçenekleri -->
         <section class="result-card">
             <div class="result-hero">
                 <span class="result-chip">Giriş Durumu</span>

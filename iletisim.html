@@ -12,6 +12,7 @@
 <body>
 
 <header>
+    <!-- Sayfa genel menüsü: diğer bölümlere hızlı erişim -->
     <nav class="navbar navbar-expand-lg site-navbar">
         <div class="container-fluid px-3 px-lg-4">
             <span class="navbar-brand logo mb-0">Web Sayfam</span>
@@ -34,7 +35,7 @@
     </nav>
 </header>
 
-<!-- Vue 3 App Wrapper -->
+<!-- Vue 3 App Wrapper: form doğrulama mantığı bu kapsayıcıda çalışır -->
 <div id="app">
     <main class="container contact-main">
 
@@ -43,14 +44,14 @@
             <p class="contact-subtitle">Benimle iletişime geçmek için aşağıdaki formu doldurun.</p>
         </div>
 
-        <!-- ── JavaScript Doğrulama Özeti ── -->
+        <!-- JavaScript doğrulama özeti: hata mesajları bu alanda gösterilir -->
         <div id="js-alert" class="alert alert-danger contact-alert d-none" role="alert">
             <strong><i>⚠ 🟡 JavaScript Doğrulama Hataları:</i></strong>
     <div id="js-error-count"></div>
             <ul id="js-error-list" class="mb-0 mt-2"></ul>
         </div>
 
-        <!-- ── Başarı Mesajları ── -->
+        <!-- Başarı mesajları: Vue ve JavaScript doğrulamasının olumlu sonucu -->
         <div v-if="vueSuccess" class="alert alert-success contact-alert" role="alert">
             <strong>✅ 🔵 Vue.js Doğrulama Başarılı!</strong>
             <p class="mb-0 mt-2">Formunuz tüm kontrolleri geçti. Mesajınız gönderilebilir.</p>
@@ -60,7 +61,7 @@
             <p class="mb-0 mt-2">Formunuz tüm kontrolleri geçti. Mesajınız gönderilebilir.</p>
         </div>
 
-        <!-- ══════════ FORM ══════════ -->
+        <!-- İletişim formu: tüm alanlar ve doğrulama bileşenleri burada -->
         <form class="contact-form" novalidate method="post" action="sonuc.php" enctype="multipart/form-data" @submit.prevent>
 
             <div class="form-card">
@@ -325,13 +326,14 @@
     <small>© 2025 Arda — Tüm hakları saklıdır.</small>
 </footer>
 
-<!-- Bootstrap JS -->
+<!-- Sayfa bileşenleri için Bootstrap JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Vue 3 CDN -->
+<!-- Vue 3 CDN: form doğrulama ve reaktif alanlar için -->
 <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 
 <script>
+/* Vue uygulaması: form verileri, anlık doğrulama ve gönderim kontrolü */
 /* ═══════════════════════════════════════════════
    VUE 3 UYGULAMASI
    ═══════════════════════════════════════════════ */

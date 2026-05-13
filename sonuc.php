@@ -1,9 +1,11 @@
 <?php
+// HTML için güvenli metin üretir
 function e($value)
 {
     return htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');
 }
 
+// Boş alanları ve dizileri okunabilir biçimde gösterir
 function displayValue($value)
 {
     if (is_array($value)) {
@@ -18,6 +20,7 @@ function displayValue($value)
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    // Form dışı erişimde kullanıcıyı iletişim sayfasına yönlendiren basit fallback
     echo '<!DOCTYPE html><html lang="tr"><head><meta charset="UTF-8"><title>Sonuc</title></head><body>';
     echo '<h2>Bu sayfa sadece form gonderimi ile acilmalidir.</h2>';
     echo '<p><a href="iletisim.html">Iletisim formuna don</a></p>';
@@ -42,6 +45,7 @@ $fields = [
     'kosullar' => 'Kullanım Koşulları',
 ];
 
+// Yüklenen dosyanın özet bilgisi hazırlanır
 $uploadedFileInfo = 'Yüklenen dosya yok.';
 if (isset($_FILES['dosya']) && $_FILES['dosya']['error'] === UPLOAD_ERR_OK) {
     $uploadedFileInfo = 'Dosya Adı: ' . e($_FILES['dosya']['name'])
@@ -63,6 +67,7 @@ $hasUploadedFile = isset($_FILES['dosya']) && $_FILES['dosya']['error'] === UPLO
 </head>
 <body class="result-page">
     <header>
+        <!-- Sonuç sayfası için ortak üst menü -->
         <nav class="navbar navbar-expand-lg site-navbar">
             <div class="container-fluid px-3 px-lg-4">
                 <span class="navbar-brand logo mb-0">Web Sayfam</span>
@@ -86,6 +91,7 @@ $hasUploadedFile = isset($_FILES['dosya']) && $_FILES['dosya']['error'] === UPLO
     </header>
 
     <main class="container result-main">
+        <!-- Form verilerini özetleyen sonuç kartı -->
         <section class="result-card">
             <div class="result-hero">
                 <span class="result-chip">Mesaj Durumu</span>
@@ -95,6 +101,7 @@ $hasUploadedFile = isset($_FILES['dosya']) && $_FILES['dosya']['error'] === UPLO
 
             <h2>Gönderilen Form Bilgileri</h2>
 
+            <!-- Gönderilen alanların tablo görünümü -->
             <div class="result-table-wrap">
                 <table class="result-table">
                     <tbody>
@@ -116,11 +123,13 @@ $hasUploadedFile = isset($_FILES['dosya']) && $_FILES['dosya']['error'] === UPLO
                 </table>
             </div>
 
+            <!-- Dosya yükleme durumu ayrıca gösterilir -->
             <div class="upload-card<?php echo $hasUploadedFile ? ' upload-card-success' : ''; ?>">
                 <strong>Dosya Bilgisi</strong>
                 <p class="mb-0"><?php echo $uploadedFileInfo; ?></p>
             </div>
 
+            <!-- İletişim sayfasına veya ana sayfaya dönüş seçenekleri -->
             <div class="result-actions">
                 <a href="iletisim.html" class="result-btn">İletişim Formuna Geri Dön</a>
                 <a href="index.html" class="result-btn result-btn-secondary">Ana Sayfaya Git</a>
